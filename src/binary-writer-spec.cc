@@ -362,12 +362,14 @@ void BinaryWriterSpec::WriteActionResultType(const Action& action) {
   json_stream_->Writef("[");
   switch (action.type()) {
     case ActionType::Invoke: {
+#if 0
       export_ = module->GetExport(action.name);
       assert(export_->kind == ExternalKind::Func);
       const Func* func = module->GetFunc(export_->var);
       Index num_results = func->GetNumResults();
       for (Index i = 0; i < num_results; ++i)
         WriteTypeObject(func->GetResultType(i));
+#endif
       break;
     }
 
